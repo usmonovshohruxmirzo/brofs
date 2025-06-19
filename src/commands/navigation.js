@@ -1,25 +1,27 @@
-import path from "path";
-import { promises as fs } from "fs";
+import process from "process";
+import { resolvePath, printSuccess } from "../utils/helpers.js";
+import fs from "fs/promises";
 
-export async function handleNavigation(command, currentDir) {
+const changeDir = (targetPath) => {
   try {
-    if (command === "up") {
-      const parentDir = path.dirname(currentDir);
-      return parentDir === currentDir ? currentDir : parentDir;
-    }
-
-    if (command.startsWith("cd ")) {
-      const targetPath = path.resolve(currentDir, command.slice(3).trim());
-      const stats = await fs.stat(targetPath);
-      if (stats.isDirectory()) return targetPath;
-    }
-
-    if (command === "ls"){
-        
-    }
-  } catch (error) {
-    console.log("Operation files");
+    const newPath = resolvePath(targetPath);
+    process.chdir(newPath);
+    printSuccess(`Changed directory to ${process.cwd()}`);
+  } catch {
+    console.error("❌ Failed to change directory.");
   }
+};
 
-  return currentDir;
-}
+const listDir = async () => {
+  const files = await fs.readdir(process.cwd(), { withFileTypes: true });
+  try {
+    files.forEach((file) => {
+      const type = file.isDirectory() ? "📁" : "📄";
+      console.log(`${type} ${file.name}`);
+    });
+  } catch {
+    console.error("❌ Unable to list directory.");
+  }
+};
+
+export { changeDir, listDir };
