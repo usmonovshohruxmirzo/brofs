@@ -1,6 +1,5 @@
 import fs from "fs/promises";
-import { existsSync } from "fs";
-import { handleError, printSuccess, resolvePath } from "../utils/helpers";
+import { handleError, printSuccess, resolvePath } from "../utils/helpers.js";
 
 const readFile = async (filePath) => {
   try {
@@ -34,7 +33,6 @@ const removeFile = async (filePath) => {
 
 const renameFile = async (oldPath, newPath) => {
   try {
-    const path = resolvePath(filePath);
     await fs.rename(resolvePath(oldPath), resolvePath(newPath));
     printSuccess("Renamed successfully.");
   } catch {
