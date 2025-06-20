@@ -135,4 +135,4 @@ brofs unzip compressed.gz decompressed.json
 
 ## 📜 License
 
-MIT License
+[MIT License](./LICENSE)
