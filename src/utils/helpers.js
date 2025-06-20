@@ -2,7 +2,7 @@ import path from "path";
 import os from "os";
 
 const resolvePath = (inputPath) => {
-  inputPath ? path.resolve(process.cwd(), inputPath) : process.cwd();
+  return inputPath ? path.resolve(process.cwd(), inputPath) : process.cwd();
 };
 
 const handleError = (msg) => {
