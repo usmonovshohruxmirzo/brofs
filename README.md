@@ -1,4 +1,4 @@
-# 📁 File Manager CLI (`brofs`)
+# 🤖 `brofs` - The Bro File System CLI
 
 A powerful and lightweight command-line **File Manager** built with **Node.js**.
 Supports file operations, OS info, hashing, compression, and more.
