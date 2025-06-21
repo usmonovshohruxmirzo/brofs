@@ -27,6 +27,7 @@ npm link
 ```
 
 > 🔧 If you're on Windows, ensure this is in your PATH:
+> 
 > `export PATH=$PATH:/c/Users/ACER_NITRO/AppData/Roaming/npm`
 
 ---
