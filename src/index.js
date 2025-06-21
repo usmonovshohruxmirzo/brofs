@@ -9,6 +9,7 @@ import { changeDir, listDir } from "./commands/navigation.js";
 import { showOSInfo } from "./commands/osInfo.js";
 import { calculateHash } from "./commands/hash.js";
 import { compressFile, decompressFile } from "./commands/compress.js";
+import { showDashboard } from "./commands/dashboard.js";
 
 const args = process.argv.slice(2);
 const [command, ...rest] = args;
@@ -48,32 +49,8 @@ switch (command) {
     console.log("v1.0.0");
     break;
   case "--help":
-    console.log(`
-██████╗ ██████╗  ██████╗ ███████╗███████╗
-██╔══██╗██╔══██╗██╔═══██╗██╔════╝██╔════╝
-██████╔╝██████╔╝██║   ██║█████╗  ███████╗
-██╔══██╗██╔══██╗██║   ██║██╔══╝  ╚════██║
-██████╔╝██║  ██║╚██████╔╝██║     ███████║
-╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚══════╝
-                                         
-🤖 brofs - The Bro File System CLI
-
-Usage:
-  brofs ls                   List directory contents
-  brofs cd <dir>             Change directory
-  brofs read <file>          Read file content
-  brofs create <file>        Create an empty file
-  brofs delete <file>        Delete a file
-  brofs rename <old> <new>   Rename a file
-  brofs hash <file>          Print SHA256 hash
-  brofs zip <in> <out>       Gzip compress
-  brofs unzip <in> <out>     Gzip decompress
-  brofs os                   Show OS info
-  brofs -v                   Show Version
-  brofs -h                   Help
-    `);
+    showDashboard();
     break;
-
   default:
     console.log(
       `❌ Unknown command: "${command}". Use --help to see available commands.`
