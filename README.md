@@ -105,11 +105,14 @@ file-manager-cli/
 
 ---
 
-## 🧠 How It Works
+## 🧠 How It Works (Updated)
 
-- Written in **ES Modules** (`type: module`)
-- Uses **Commander.js** for CLI
-- Uses **fs/promises** and **stream** for efficient file handling
+- Written in **ES Modules** (`"type": "module"` in `package.json`)
+- Uses **`process.argv`** for manual CLI parsing (no 3rd-party CLI lib)
+- Uses **`fs/promises`**, **`stream/promises`**, and **`zlib`** for efficient async file handling
+- Clean and minimal CLI structure, following UNIX-like commands
+- Fully modular - each command is organized under `src/commands/`
+- `--help` is routed to a custom, styled **dashboard.js**
 
 ---
 

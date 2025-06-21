@@ -1,29 +1,58 @@
 #!/usr/bin/env node
-import { program } from "commander";
-import * as fileOps from "./commands/fileOps.js";
-import * as nav from "./commands/navigation.js";
-import * as osInfo from "./commands/osInfo.js";
-import * as hash from "./commands/hash.js";
-import * as zip from "./commands/compress.js";
+import {
+  readFile,
+  createFile,
+  removeFile,
+  renameFile,
+} from "./commands/fileOps.js";
+import { changeDir, listDir } from "./commands/navigation.js";
+import { showOSInfo } from "./commands/osInfo.js";
+import { calculateHash } from "./commands/hash.js";
+import { compressFile, decompressFile } from "./commands/compress.js";
+import { showDashboard } from "./commands/dashboard.js";
 
-program
-  .name("brofs")
-  .description("🤖 brofs - The Bro File System CLI")
-  .version("1.0.0");
+const args = process.argv.slice(2);
+const [command, ...rest] = args;
 
-program.command("read <file>").action(fileOps.readFile);
-program.command("create <file>").action(fileOps.createFile);
-program.command("delete <file>").action(fileOps.removeFile);
-program.command("rename <old> <new>").action(fileOps.renameFile);
-
-program.command("cd <dir>").action(nav.changeDir);
-program.command("ls").action(nav.listDir);
-
-program.command("os").action(osInfo.showOSInfo);
-
-program.command("hash <file>").action(hash.calculateHash);
-
-program.command("zip <input> <output>").action(zip.compressFile);
-program.command("unzip <input> <output>").action(zip.decompressFile);
-
-program.parse(process.argv);
+switch (command) {
+  case "read":
+    await readFile(rest[0]);
+    break;
+  case "create":
+    await createFile(rest[0]);
+    break;
+  case "delete":
+    await removeFile(rest[0]);
+    break;
+  case "rename":
+    await renameFile(rest[0], rest[1]);
+    break;
+  case "cd":
+    await changeDir(rest[0]);
+    break;
+  case "ls":
+    await listDir();
+    break;
+  case "os":
+    await showOSInfo();
+    break;
+  case "hash":
+    await calculateHash(rest[0]);
+    break;
+  case "zip":
+    await compressFile(rest[0], rest[1]);
+    break;
+  case "unzip":
+    await decompressFile(rest[0], rest[1]);
+    break;
+  case "-v":
+    console.log("v1.0.0");
+    break;
+  case "--help":
+    showDashboard();
+    break;
+  default:
+    console.log(
+      `❌ Unknown command: "${command}". Use --help to see available commands.`
+    );
+}
