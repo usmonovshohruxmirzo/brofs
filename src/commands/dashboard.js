@@ -1,47 +1,39 @@
+import { colors } from "../utils/colors.js";
+
 const showDashboard = () => {
-  const brightBlue = "\x1b[94m";
-  const cyan = "\x1b[36m";
-  const reset = "\x1b[0m";
+  const { brightBlue, cyan, yellow, green, reset } = colors;
 
   console.log(`${brightBlue}
-    ██████╗ ██████╗  ██████╗ ███████╗███████╗
-    ██╔══██╗██╔══██╗██╔═══██╗██╔════╝██╔════╝
-    ██████╔╝██████╔╝██║   ██║█████╗  ███████╗
-    ██╔══██╗██╔══██╗██║   ██║██╔══╝  ╚════██║
-    ██████╔╝██║  ██║╚██████╔╝██║     ███████║
-    ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚══════╝
-        ${reset}`);
+██████╗ ██████╗  ██████╗ ███████╗███████╗
+██╔══██╗██╔══██╗██╔═══██╗██╔════╝██╔════╝
+██████╔╝██████╔╝██║   ██║█████╗  ███████╗
+██╔══██╗██╔══██╗██║   ██║██╔══╝  ╚════██║
+██████╔╝██║  ██║╚██████╔╝██║     ███████║
+╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚══════╝
+${reset}`);
 
-  console.log(`${cyan}🤖 brofs - The Bro File System CLI${reset}`);
+  console.log(`${cyan}🤖 brofs - The Bro File System CLI${reset}\n`);
 
-  console.log("\n📁 \x1b[36mUsage:\x1b[0m");
+  console.log(`📁 ${cyan}Usage:${reset}\n`);
 
-  console.log(
-    "  🔍 \x1b[33mbrofs ls\x1b[0m                   List directory contents"
-  );
-  console.log(
-    "  📂 \x1b[33mbrofs cd <dir>\x1b[0m             Change directory"
-  );
-  console.log(
-    "  📖 \x1b[33mbrofs read <file>\x1b[0m          Read file content"
-  );
-  console.log(
-    "  🆕 \x1b[33mbrofs create <file>\x1b[0m        Create an empty file"
-  );
-  console.log("  ❌ \x1b[33mbrofs delete <file>\x1b[0m        Delete a file");
-  console.log("  ✏️  \x1b[33mbrofs rename <old> <new>\x1b[0m   Rename a file");
-  console.log(
-    "  🔐 \x1b[33mbrofs hash <file>\x1b[0m          Print SHA256 hash"
-  );
-  console.log("  📦 \x1b[33mbrofs zip <in> <out>\x1b[0m       Gzip compress");
-  console.log(
-    "  🗜️  \x1b[33mbrofs unzip <in> <out>\x1b[0m     Gzip decompress"
-  );
-  console.log("  💻 \x1b[33mbrofs os\x1b[0m                   Show OS info");
-  console.log("  🧾 \x1b[33mbrofs -v\x1b[0m                   Show Version");
-  console.log("  ❓ \x1b[33mbrofs --help\x1b[0m               Help");
+  const logLine = (emoji, command, desc) => {
+    console.log(`  ${emoji} ${yellow}${command}${reset}   ${desc}`);
+  };
 
-  console.log("\n\x1b[32mMade with ❤️  by Webbro Software\x1b[0m\n");
+  logLine("🔍", "brofs ls".padEnd(24), "List directory contents");
+  logLine("📂", "brofs cd <dir>".padEnd(24), "Change directory");
+  logLine("📖", "brofs read <file>".padEnd(24), "Read file content");
+  logLine("🆕", "brofs create <file>".padEnd(24), "Create an empty file");
+  logLine("❌", "brofs delete <file>".padEnd(24), "Delete a file");
+  logLine("✏️ ", "brofs rename <old> <new>".padEnd(24), "Rename a file");
+  logLine("🔐", "brofs hash <file>".padEnd(24), "Print SHA256 hash");
+  logLine("📦", "brofs zip <in> <out>".padEnd(24), "Gzip compress");
+  logLine("🗜️ ", "brofs unzip <in> <out>".padEnd(24), "Gzip decompress");
+  logLine("💻", "brofs os".padEnd(24), "Show OS info");
+  logLine("🧾", "brofs -v".padEnd(24), "Show Version");
+  logLine("❓", "brofs --help".padEnd(24), "Help");
+
+  console.log(`\n${green}Made with ❤️  by Webbro Software${reset}\n`);
 };
 
 export { showDashboard };
