@@ -91,7 +91,7 @@ brofs <command> [options]
 ## 🔧 Project Structure
 
 ```
-file-manager-cli/
+brofs/
 ├── package.json
 └── src/
     ├── index.js            # CLI entry point
