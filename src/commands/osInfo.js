@@ -1,12 +1,21 @@
 import os from "os";
+import { colors } from "../utils/colors.js";
 
 const showOSInfo = () => {
-  console.log("🖥️ OS Info");
-  console.log("User:", os.userInfo().username);
-  console.log("Home dir:", os.homedir());
-  console.log("CPU:", os.cpus()[0].model);
-  console.log("Arch:", os.arch());
-  console.log("Platform:", os.platform());
+  const { cyan, yellow, green, magenta, reset } = colors;
+
+  console.log();
+  console.log(`${cyan}🖥️  OS Info${reset}`);
+  console.log(
+    `${yellow}- User:      ${reset}${green}${os.userInfo().username}${reset}`
+  );
+  console.log(`${yellow}- Home dir:  ${reset}${green}${os.homedir()}${reset}`);
+  console.log(
+    `${yellow}- CPU:       ${reset}${magenta}${os.cpus()[0].model}${reset}`
+  );
+  console.log(`${yellow}- Arch:      ${reset}${green}${os.arch()}${reset}`);
+  console.log(`${yellow}- Platform:  ${reset}${green}${os.platform()}${reset}`);
+  console.log();
 };
 
 export { showOSInfo };

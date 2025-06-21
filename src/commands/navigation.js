@@ -14,10 +14,11 @@ const changeDir = (targetPath) => {
 
 const listDir = async () => {
   const files = await fs.readdir(process.cwd(), { withFileTypes: true });
+  console.log();
   try {
     files.forEach((file) => {
       const type = file.isDirectory() ? "📁" : "📄";
-      console.log(`${type} ${file.name}`);
+      console.log(`- ${type} ${file.name}`);
     });
   } catch {
     console.error("❌ Unable to list directory.");
