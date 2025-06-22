@@ -28,16 +28,16 @@ switch (command) {
     await renameFile(rest[0], rest[1]);
     break;
   case "cd":
-    await changeDir(rest[0]);
+    changeDir(rest[0]);
     break;
   case "ls":
     await listDir();
     break;
   case "os":
-    await showOSInfo();
+    showOSInfo();
     break;
   case "hash":
-    await calculateHash(rest[0]);
+    calculateHash(rest[0]);
     break;
   case "zip":
     await compressFile(rest[0], rest[1]);
