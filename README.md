@@ -2,7 +2,6 @@
 
 ![image](https://github.com/user-attachments/assets/fc54a856-c2aa-470d-a152-08671db997d5)
 
-
 A powerful and lightweight command-line **File Manager** built with **Node.js**.
 Supports file operations, OS info, hashing, compression, and more.
 
@@ -30,7 +29,7 @@ npm link
 ```
 
 > 🔧 If you're on Windows, ensure this is in your PATH:
-> 
+>
 > `export PATH=$PATH:/c/Users/ACER_NITRO/AppData/Roaming/npm`
 
 ---
@@ -112,7 +111,7 @@ brofs/
 - Uses **`fs/promises`**, **`stream/promises`**, and **`zlib`** for efficient async file handling
 - Clean and minimal CLI structure, following UNIX-like commands
 - Fully modular - each command is organized under `src/commands/`
-- `--help` is routed to a custom, styled **dashboard.js**
+- `--help` is routed to a custom, styled **help.js**
 
 ---
 

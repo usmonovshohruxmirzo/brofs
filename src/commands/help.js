@@ -1,6 +1,6 @@
 import { colors } from "../utils/colors.js";
 
-const showDashboard = () => {
+const help = () => {
   const { brightBlue, cyan, yellow, green, reset } = colors;
 
   console.log(`${brightBlue}
@@ -36,4 +36,4 @@ ${reset}`);
   console.log(`\n${green}Made with ❤️  by Webbro Software${reset}\n`);
 };
 
-export { showDashboard };
+export { help };

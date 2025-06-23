@@ -9,7 +9,7 @@ import { changeDir, listDir } from "./commands/navigation.js";
 import { showOSInfo } from "./commands/osInfo.js";
 import { calculateHash } from "./commands/hash.js";
 import { compressFile, decompressFile } from "./commands/compress.js";
-import { showDashboard } from "./commands/dashboard.js";
+import { help } from "./commands/help.js";
 
 const args = process.argv.slice(2);
 const [command, ...rest] = args;
@@ -49,7 +49,7 @@ switch (command) {
     console.log("v1.0.0");
     break;
   case "--help":
-    showDashboard();
+    help();
     break;
   default:
     console.log(
